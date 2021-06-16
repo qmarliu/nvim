@@ -53,6 +53,9 @@ Plug 'ervandew/supertab'
 
 " go 主要插件 安装好后，要执行:GoInstallBinaries才能正常工作
 Plug 'fatih/vim-go', { 'tag': '*', 'for': 'go' }
+" solidity
+Plug 'tomlion/vim-solidity', { 'for': 'sol' }
+Plug 'vim-syntastic/syntastic', { 'for': 'sol' }
 
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
@@ -82,9 +85,11 @@ Plug 'yuezk/vim-js', { 'for': ['php', 'html', 'javascript'] }
 
 " 文件查找
 Plug 'kien/ctrlp.vim'
-" 多文件内容的查找和替换
+" 多文件内容的查找
 " 需要在.zshrc中添加以去掉警告 export LC_ALL=C
 Plug 'mileszs/ack.vim'
+" 内容替换
+" Plug 'brooth/far.vim'
 
 " 快速添加和修改成对出现的符号
 Plug 'tpope/vim-surround'
@@ -109,6 +114,13 @@ Plug 'itchyny/calendar.vim'
 " coc自动补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" 调试代码
+Plug 'puremourning/vimspector', {'do': './install_gadget.py
+            \ --enable-c --enable-python --enable-go'}
+
+"buf操作
+Plug 'Asheq/close-buffers.vim'
+
 call plug#end()
 
 
@@ -118,7 +130,7 @@ call plug#end()
 "==============================================================================
 "
 " 打开和关闭NERDTree快捷键
-nmap <LEADER>ff :NERDTreeToggle<CR>
+nmap <LEADER>t :NERDTreeToggle<CR>
 " 显示在右边
 let g:NERDTreeWinPos = "right"
 " 显示行号
@@ -205,9 +217,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_generate_tags = 1
-
-" vim-godef gd跳转的时候，不开新的tab
-let g:godef_split=0
 
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
@@ -367,3 +376,6 @@ color deus
 " ack配置
 noremap <LEADER>f :Ack<Space>
 
+" close buffer
+noremap <LEADER>br :Bdelete select<CR>
+noremap <LEADER>bo :Bdelete other<CR>
