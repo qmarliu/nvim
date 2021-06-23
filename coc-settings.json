@@ -1,17 +1,22 @@
 {
-  "codeLens.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "html",
-    "css",
-    "json"
-  ],
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "disableWorkspaceFolders": true,
-      "filetypes": ["go"]
+    "codeLens.enable": true,
+    "snippets.ultisnips.usePythonx": false,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "html",
+        "css",
+        "json"
+    ],
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod"
+            ],
+            "disableWorkspaceFolders": true,
+            "filetypes": [
+                "go"
+            ]
+        }
     }
-  }
 }
