@@ -259,7 +259,7 @@ let NERDTreeAutoCenter=1
 " 是否显示隐藏文件
 let NERDTreeShowHidden=0
 " 设置宽度
-" let NERDTreeWinSize=31
+let NERDTreeWinSize=31
 " 忽略以下文件的显示
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 " 打开 vim 文件及显示书签列表
