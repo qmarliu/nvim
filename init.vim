@@ -6,7 +6,7 @@
 " === System
 syntax on
 syntax enable
-set clipboard=unnamed
+set clipboard+=unnamedplus
 " set autochdir
 
 " === Editor behavior
@@ -44,6 +44,7 @@ noremap k gk
 
 " 替换
 noremap \s :%s//g<left><left>
+vnoremap \s :s//g<left><left>
 
 " Spell
 " z= 查看拼写的备用选项
@@ -57,7 +58,7 @@ noremap <LEADER>w :w<CR>
 noremap <LEADER>q :q<CR>
 
 " Copy to system clipboard
-vnoremap Y "+y
+vnoremap Y "*y
 noremap <LEADER>p "0p
 noremap <LEADER>P "0P
 
@@ -114,8 +115,6 @@ noremap <LEADER>sbp :sbp<CR>
 noremap <LEADER>sbn :sbn<CR>
 noremap <LEADER>sbf :sbf<CR>
 noremap <LEADER>sbl :sbl<CR>
-
-set clipboard+=unnamedplus
 
 filetype on
 filetype plugin on
@@ -197,6 +196,7 @@ Plug 'yuezk/vim-js', { 'for': ['php', 'html', 'javascript'] }
 
 " 文件查找
 Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " 多文件内容的查找
 " 需要在.zshrc中添加以去掉警告 export LC_ALL=C
 Plug 'mileszs/ack.vim'
@@ -227,8 +227,8 @@ Plug 'itchyny/calendar.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " 调试代码
-Plug 'puremourning/vimspector', {'do': './install_gadget.py
-            \ --enable-c --enable-python --enable-go'}
+" Plug 'puremourning/vimspector', {'do': './install_gadget.py
+            " \ --enable-c --enable-python --enable-go'}
 
 "buf操作
 Plug 'Asheq/close-buffers.vim'
@@ -243,6 +243,9 @@ Plug 'mg979/vim-xtabline'
 call plug#end()
 
 
+" 复制粘贴
+Plug 'tpope/vim-repeat'
+Plug 'svermeulen/vim-easyclip'
 " 开始插件的配置
 "==============================================================================
 " NERDTree 插件
@@ -574,3 +577,6 @@ noremap <LEADER>f :Ack<Space>
 " close buffer
 noremap <LEADER>br :Bdelete select<CR>
 noremap <LEADER>bo :Bdelete other<CR>
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
