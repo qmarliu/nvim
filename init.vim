@@ -475,6 +475,10 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "==============================================================================
 "  rnvimr
 "==============================================================================
+" ranger配置
+" nnoremap <LEADER>ra :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+nnoremap <LEADER>ra :RnvimrToggle<CR>
+
 "" Make Ranger replace Netrw and be the file explorer
 let g:rnvimr_enable_ex = 1
 
