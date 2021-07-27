@@ -41,6 +41,8 @@ let mapleader = ","
 inoremap jk <ESC>
 noremap j gj
 noremap k gk
+noremap <A-[> <C-o>
+noremap <A-]> <C-i>
 
 " 替换
 noremap \s :%s//g<left><left>
