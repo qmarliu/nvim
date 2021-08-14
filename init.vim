@@ -63,6 +63,8 @@ noremap <LEADER>q :q<CR>
 vnoremap Y "*y
 noremap <LEADER>p "0p
 noremap <LEADER>P "0P
+" make Y to copy till the end of the line
+nnoremap Y y$
 
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
@@ -143,9 +145,11 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " 可以在导航目录中看到 git 版本信息
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " 可以在文档中显示 git 信息
+" You can jump between hunks with [c and ]c. You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively.
 Plug 'airblade/vim-gitgutter'
 " 可直接执行git相关的命令
 Plug 'tpope/vim-fugitive'
+Plug 'kdheepak/lazygit.nvim'
 
 " 查看当前代码文件中的变量和函数列表的插件，
 " 可以切换和跳转到代码中对应的变量和函数的位置
@@ -242,12 +246,14 @@ Plug 'kevinhwang91/rnvimr'
 "F5 --- change tabline mode
 "N BS --- go to N tab (in tabs mode) or N buffer (in buffers mode)
 Plug 'mg979/vim-xtabline'
+
+" 复制粘贴
+" Plug 'tpope/vim-repeat'
+" Plug 'svermeulen/vim-easyclip'
+
 call plug#end()
 
 
-" 复制粘贴
-Plug 'tpope/vim-repeat'
-Plug 'svermeulen/vim-easyclip'
 " 开始插件的配置
 "==============================================================================
 " NERDTree 插件
@@ -262,7 +268,7 @@ let NERDTreeShowLineNumbers=1
 " 打开文件时是否显示目录
 let NERDTreeAutoCenter=1
 " 是否显示隐藏文件
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 " 设置宽度
 let NERDTreeWinSize=31
 " 忽略以下文件的显示
@@ -476,6 +482,16 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"==============================================================================
+"  lazygit
+"==============================================================================
+"" setup mapping to call :LazyGit
+nnoremap <silent> <leader>gg :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
 "==============================================================================
 "  rnvimr
