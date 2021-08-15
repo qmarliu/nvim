@@ -50,7 +50,8 @@ vnoremap \s :s//g<left><left>
 
 " Spell
 " z= 查看拼写的备用选项
-" C-x s在写入模式检查拼写
+" ]s, [s查看拼写错误的
+" C-x s 在写入模式检查拼写
 noremap <LEADER>sc :set spell!<CR>
 
 " Save & quit
@@ -103,7 +104,7 @@ noremap <LEADER>ss <C-w>t<C-w>H
 noremap <LEADER>rh <C-w>b<C-w>K
 noremap <LEADER>rv <C-w>b<C-w>H
 
-" === Buf management
+" === Buff management
 noremap <LEADER>bs :b<Space>
 noremap <LEADER>bd :bd<CR>
 noremap <LEADER>bp :bp<CR>
@@ -177,6 +178,7 @@ Plug 'vim-syntastic/syntastic', { 'for': 'sol' }
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 
 " 重命令当前文件名
 Plug 'danro/rename.vim'
@@ -260,7 +262,7 @@ call plug#end()
 "==============================================================================
 "
 " 打开和关闭NERDTree快捷键
-nmap <LEADER>t :NERDTreeToggle<CR>
+nmap <LEADER>n :NERDTreeToggle<CR>
 " 显示在右边
 let g:NERDTreeWinPos = "right"
 " 显示行号
@@ -581,6 +583,7 @@ nmap ga <Plug>(EasyAlign)
 " markdwon 的快捷键
 " map <silent> <F5> <Plug>MarkdownPreview
 " map <silent> <F6> <Plug>StopMarkdownPreview
+noremap <LEADER>tm :TableModeToggle<CR>
 
 " vim-visual-multi的快捷键
 map <C-j> <C-Down>
