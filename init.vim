@@ -605,3 +605,6 @@ noremap <LEADER>bo :Bdelete other<CR>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+" 设置半透明
+hi Normal ctermfg=252 ctermbg=none
