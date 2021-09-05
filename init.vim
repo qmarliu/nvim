@@ -62,6 +62,10 @@ noremap <LEADER>q :q<CR>
 
 " Copy to system clipboard
 vnoremap Y "*y
+vnoremap ay "ay
+vnoremap zy "zy
+noremap <LEADER>ap "ap
+noremap <LEADER>zp "zp
 noremap <LEADER>p "0p
 noremap <LEADER>P "0P
 " make Y to copy till the end of the line
