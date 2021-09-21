@@ -74,6 +74,10 @@ nnoremap Y y$
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
 
+" display
+noremap <LEADER>zo :set wrap<CR>
+noremap <LEADER>zc :set nowrap<CR>
+
 " === Command Mode Cursor Movement
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -226,6 +230,31 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ojroques/vim-scrollstatus'
 
 " 标签管理
+" mx           Toggle mark 'x' and display it in the leftmost column
+" dmx          Remove mark 'x' where x is a-zA-Z
+"
+" m,           Place the next available mark
+" m.           If no mark on line, place the next available mark. Otherwise, remove (first) existing mark.
+" m-           Delete all marks from the current line
+" m<Space>     Delete all marks from the current buffer
+" ]`           Jump to next mark
+" [`           Jump to prev mark
+" ]'           Jump to start of next line containing a mark
+" ['           Jump to start of prev line containing a mark
+" `]           Jump by alphabetical order to next mark
+" `[           Jump by alphabetical order to prev mark
+" ']           Jump by alphabetical order to start of next line having a mark
+" '[           Jump by alphabetical order to start of prev line having a mark
+" m/           Open location list and display marks from current buffer
+"
+" m[0-9]       Toggle the corresponding marker !@#$%^&*()
+" m<S-[0-9]>   Remove all markers of the same type
+" ]-           Jump to next line having a marker of the same type
+" [-           Jump to prev line having a marker of the same type
+" ]=           Jump to next line having a marker of any type
+" [=           Jump to prev line having a marker of any type
+" m?           Open location list and display markers from current buffer
+" m<BS>        Remove all markers
 Plug 'kshenoy/vim-signature'
 " Initialize plugin system
 
@@ -257,6 +286,8 @@ Plug 'mg979/vim-xtabline'
 " Plug 'tpope/vim-repeat'
 " Plug 'svermeulen/vim-easyclip'
 
+" 翻译
+" Plug 'voldikss/vim-translator'
 call plug#end()
 
 
@@ -317,6 +348,40 @@ let g:tagbar_type_go = {
     \ },
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
+\ }
+
+let g:tagbar_type_cpp = {
+    \ 'kinds' : [
+         \ 'c:classes:0:1',
+         \ 'd:macros:0:1',
+         \ 'e:enumerators:0:0',
+         \ 'f:functions:0:1',
+         \ 'g:enumeration:0:1',
+         \ 'l:local:0:1',
+         \ 'm:members:0:1',
+         \ 'n:namespaces:0:1',
+         \ 'p:functions_prototypes:0:1',
+         \ 's:structs:0:1',
+         \ 't:typedefs:0:1',
+         \ 'u:unions:0:1',
+         \ 'v:global:0:1',
+         \ 'x:external:0:1'
+     \ ],
+     \ 'sro'        : '::',
+     \ 'kind2scope' : {
+         \ 'g' : 'enum',
+         \ 'n' : 'namespace',
+         \ 'c' : 'class',
+         \ 's' : 'struct',
+         \ 'u' : 'union'
+     \ },
+     \ 'scope2kind' : {
+         \ 'enum'      : 'g',
+         \ 'namespace' : 'n',
+         \ 'class'     : 'c',
+         \ 'struct'    : 's',
+         \ 'union'     : 'u'
+     \ }
 \ }
 
 "==============================================================================
@@ -436,9 +501,6 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" coc-translator
-nmap ts <Plug>(coc-translator-p)
-
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -451,7 +513,9 @@ nmap <leader>F  <Plug>(coc-format-selected)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
+" coc-translator
 nmap <leader>ts <Plug>(coc-translator-p)
+
 let g:snips_author = 'LiuL'
 let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
