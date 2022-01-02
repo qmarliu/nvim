@@ -113,21 +113,10 @@ noremap <LEADER>rh <C-w>b<C-w>K
 noremap <LEADER>rv <C-w>b<C-w>H
 
 " === Buff management
-noremap <LEADER>bs :b<Space>
+" close buffer
+noremap <LEADER>bo :Bdelete other<CR>
 noremap <LEADER>bd :bd<CR>
-noremap <LEADER>bp :bp<CR>
-noremap <LEADER>bn :bn<CR>
-noremap <LEADER>bf :bf<CR>
-noremap <LEADER>bl :bl<CR>
-noremap <LEADER>.  :bn<CR>
-noremap <LEADER>m  :bp<CR>
-noremap <LEADER>1  :bf<CR>
-noremap <LEADER>2  :bl<CR>
 noremap <LEADER>sbs :sb<Space>
-noremap <LEADER>sbp :sbp<CR>
-noremap <LEADER>sbn :sbn<CR>
-noremap <LEADER>sbf :sbf<CR>
-noremap <LEADER>sbl :sbl<CR>
 
 filetype on
 filetype plugin on
@@ -211,8 +200,11 @@ Plug 'ajmwagar/vim-deus'
 Plug 'yuezk/vim-js', { 'for': ['php', 'html', 'javascript'] }
 
 " 文件查找
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
 " 多文件内容的查找
 " 需要在.zshrc中添加以去掉警告 export LC_ALL=C
 Plug 'mileszs/ack.vim'
@@ -635,6 +627,42 @@ let g:rnvimr_layout = {
             \ 'style': 'minimal'
             \ }
 "==============================================================================
+" FZF
+"==============================================================================
+nnoremap <c-p> :Leaderf file<CR>
+" noremap <silent> <C-p> :Files<CR>
+noremap <silent> <C-f> :Rg<CR>
+noremap <silent> <C-h> :History<CR>
+"noremap <C-t> :BTags<CR>
+" noremap <silent> <C-l> :Lines<CR>
+noremap <silent> <C-b> :Buffers<CR>
+noremap <leader>; :History:<CR>
+
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+
+noremap <c-w> :BD<CR>
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+
+"==============================================================================
 " xtabline
 "==============================================================================
 let g:xtabline_settings = {}
@@ -665,11 +693,11 @@ let g:airline_section_x = '%{ScrollStatus()}'
 color deus
 
 " ack配置
-noremap <LEADER>f :Ack<Space>
+noremap <LEADER>f :Ack!<Space>
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --nogroup --column'
+endif
 
-" close buffer
-noremap <LEADER>br :Bdelete select<CR>
-noremap <LEADER>bo :Bdelete other<CR>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
