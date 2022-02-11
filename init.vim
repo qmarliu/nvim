@@ -47,6 +47,9 @@ noremap <A-]> <C-i>
 " 替换
 noremap \s :%s//g<left><left>
 vnoremap \s :s//g<left><left>
+" Space to Tab
+nnoremap <LEADER>tt :s/    /\t/<CR>:nohlsearch<CR>
+vnoremap <LEADER>tt :s/    /\t/<CR>:nohlsearch<CR>
 
 " Spell
 " z= 查看拼写的备用选项
@@ -59,6 +62,7 @@ noremap Q :q<CR>
 noremap <C-q> :qa<CR>
 noremap <LEADER>w :w<CR>
 noremap <LEADER>q :q<CR>
+noremap S :w<CR>
 
 " Copy to system clipboard
 vnoremap Y "*y
@@ -77,6 +81,9 @@ noremap <LEADER><CR> :nohlsearch<CR>
 " display
 noremap <LEADER>zo :set wrap<CR>
 noremap <LEADER>zc :set nowrap<CR>
+
+" Opening a terminal window
+noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " === Command Mode Cursor Movement
 cnoremap <C-a> <Home>
@@ -118,6 +125,10 @@ noremap <LEADER>bo :Bdelete other<CR>
 noremap <LEADER>bd :bd<CR>
 noremap <LEADER>sbs :sb<Space>
 
+" other
+" Call figlet
+noremap tx :r !figlet
+
 filetype on
 filetype plugin on
 filetype indent on
@@ -154,6 +165,11 @@ Plug 'kdheepak/lazygit.nvim'
 " 大纲式导航, Go 需要 https://github.com/jstemmer/gotags 支持
 Plug 'majutsushi/tagbar'
 
+" Taglist
+Plug 'liuchengxu/vista.vim'
+
+Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
+
 " 自动补全括号的插件，包括小括号，中括号，以及花括号
 Plug 'jiangmiao/auto-pairs'
 
@@ -176,6 +192,7 @@ Plug 'vim-syntastic/syntastic', { 'for': 'sol' }
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 
 " 重命令当前文件名
 Plug 'danro/rename.vim'
@@ -476,6 +493,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -704,3 +722,10 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " 设置半透明
 hi Normal ctermfg=252 ctermbg=none
+
+" vista
+noremap T :Vista!!<CR>
+
+" suda.vim
+cnoreabbrev sudowrite w suda://%
+cnoreabbrev sw w suda://%
