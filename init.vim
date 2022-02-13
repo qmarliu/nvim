@@ -277,8 +277,8 @@ Plug 'itchyny/calendar.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " 调试代码
-" Plug 'puremourning/vimspector', {'do': './install_gadget.py
-            " \ --enable-c --enable-python --enable-go'}
+Plug 'puremourning/vimspector', {'do': './install_gadget.py
+            \ --enable-c --enable-python --enable-go --enable-rust'}
 
 "buf操作
 Plug 'Asheq/close-buffers.vim'
@@ -301,6 +301,32 @@ call plug#end()
 
 
 " 开始插件的配置
+"==============================================================================
+" vimspector 插件
+"==============================================================================
+"
+" | Key        | Mapping                                     | Function                                                            |
+" |------------|---------------------------------------------|---------------------------------------------------------------------|
+" | F5         | <Plug>VimspectorContinue                    | When debugging, continue. Otherwise start debugging.                |
+" | F3         | <Plug>VimspectorStop                        | Stop debugging.                                                     |
+" | F4         | <Plug>VimspectorRestart                     | Restart debugging with the same configuration.                      |
+" | F6         | <Plug>VimspectorPause                       | Pause debuggee.                                                     |
+" | F9         | <Plug>VimspectorToggleBreakpoint            | Toggle line breakpoint on the current line.                         |
+" | <leader>F9 | <Plug>VimspectorToggleConditionalBreakpoint | Toggle conditional line breakpoint or logpoint on the current line. |
+" | F8         | <Plug>VimspectorAddFunctionBreakpoint       | Add a function breakpoint for the expression under cursor           |
+" | <leader>F8 | <Plug>VimspectorRunToCursor                 | Run to Cursor                                                       |
+" | F10        | <Plug>VimspectorStepOver                    | Step Over                                                           |
+" | F11        | <Plug>VimspectorStepInto                    | Step Into                                                           |
+" | F12        | <Plug>VimspectorStepOut                     | Step out of current function scope                                  |
+let g:vimspector_enable_mappings = 'HUMAN'
+" packadd! vimspector
+nmap <leader>dd :call vimspector#Launch()<CR>
+nmap <leader>dx :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+nmap <leader>do :VimspectorShowOutput
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB' ]
+
 "==============================================================================
 " NERDTree 插件
 "==============================================================================
@@ -465,6 +491,7 @@ noremap gb :GoBuild<CR>
 let g:coc_global_extensions = [
 	\ 'coc-marketplace',
 	\ 'coc-clangd',
+	\ 'coc-rust-analyzer',
 	\ 'coc-css',
 	\ 'coc-gitignore',
     \ 'coc-snippets',

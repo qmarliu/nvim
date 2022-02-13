@@ -1,0 +1,15 @@
+{
+    "configurations": {
+        "run": {
+            "adapter": "delve",
+            "filetypes": [
+                "go"
+            ],
+            "configuration": {
+                "request": "launch",
+                "program": "${fileDirname}",
+                "mode": "debug"
+            }
+        }
+    }
+}
