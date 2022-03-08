@@ -7,8 +7,10 @@
             ],
             "configuration": {
                 "request": "launch",
-                "program": "${fileDirname}",
-                "mode": "debug"
+                "mode": "debug",
+                "stopOnEntry": true,
+                "program": "${file}",
+                "args": []
             }
         }
     }
