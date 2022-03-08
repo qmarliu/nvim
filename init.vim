@@ -744,8 +744,12 @@ if executable('ag')
 endif
 
 
+" supertab 配置
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+inoremap <expr> <c-j> pumvisible() ? "\<C-N>" : "j"
+inoremap <expr> <c-k> pumvisible() ? "\<C-P>" : "k"
 
 " 设置半透明
 hi Normal ctermfg=252 ctermbg=none
