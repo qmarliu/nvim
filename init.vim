@@ -109,7 +109,7 @@ noremap <up> :res +1<CR>
 noremap <down> :res -1<CR>
 noremap <left> :vertical resize-1<CR>
 noremap <right> :vertical resize+1<CR>
-noremap - :vertical resize-1<CR>
+noremap _ :vertical resize-1<CR>
 noremap + :vertical resize+1<CR>
 
 " Place the two screens up and down
