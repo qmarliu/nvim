@@ -2,6 +2,7 @@
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
 " let &packpath = &runtimepath
 " source ~/.vimrc
+" 乱码时执行 :e ++enc=gb2312
 
 " === System
 syntax on
