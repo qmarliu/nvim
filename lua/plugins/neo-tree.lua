@@ -5,4 +5,7 @@ return {
       position = "right",
     },
   },
+  keys = {
+    { ";", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
+  },
 }
