@@ -41,6 +41,11 @@ map("n", ",sk", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", opt)
 map("n", ",sj", ":set splitbelow<CR>:split<CR>", opt)
 map("n", ",sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", opt)
 map("n", ",sl", ":set splitright<CR>:vsplit<CR>", opt)
+-- , + hjkl 窗口之间跳转
+map("n", ",h", "<C-w>h", opt)
+map("n", ",j", "<C-w>j", opt)
+map("n", ",k", "<C-w>k", opt)
+map("n", ",l", "<C-w>l", opt)
 map("n", "_", ":vertical resize -10<CR>", opt)
 map("n", "+", ":vertical resize +10<CR>", opt)
 
