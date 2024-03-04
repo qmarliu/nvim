@@ -37,6 +37,7 @@ map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 map("n", ",", "", opt)
+-- windows 分屏快捷键
 map("n", ",sk", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", opt)
 map("n", ",sj", ":set splitbelow<CR>:split<CR>", opt)
 map("n", ",sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", opt)
@@ -46,6 +47,11 @@ map("n", ",h", "<C-w>h", opt)
 map("n", ",j", "<C-w>j", opt)
 map("n", ",k", "<C-w>k", opt)
 map("n", ",l", "<C-w>l", opt)
+-- 关闭当前
+map("n", ",sc", "<C-w>c", opt)
+-- 关闭其他
+map("n", ",so", "<C-w>o", opt) -- close others
+-- 左右比例控制
 map("n", "_", ":vertical resize -10<CR>", opt)
 map("n", "+", ":vertical resize +10<CR>", opt)
 
