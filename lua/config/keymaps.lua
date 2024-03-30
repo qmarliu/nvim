@@ -36,6 +36,8 @@ map("n", "<leader>h9", '<cmd>lua require("harpoon.ui").nav_file(9)<cr>', opt)
 map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
+map("n", "\\s", ":%s//g<left><left>", { noremap = true, silent = false })
+
 map("n", ",", "", opt)
 -- windows 分屏快捷键
 map("n", ",sk", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>", opt)

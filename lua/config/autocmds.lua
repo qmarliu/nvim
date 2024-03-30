@@ -7,3 +7,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   command = "set formatoptions-=o",
 })
+
+-- / ? 搜索时，默认不开启flash.nvim。不然文件大的时候，会导致卡顿
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  pattern = { "/", "?" },
+  callback = function()
+    require("flash").toggle(false)
+  end,
+})
